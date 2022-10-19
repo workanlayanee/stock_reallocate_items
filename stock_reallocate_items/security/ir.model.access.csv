@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_stock_reallocate,stock.reallocate,model_stock_reallocate,base.group_user,1,1,1,1
+access_stock_reallocate_line,stock.reallocate.line,model_stock_reallocate_line,base.group_user,1,1,1,1

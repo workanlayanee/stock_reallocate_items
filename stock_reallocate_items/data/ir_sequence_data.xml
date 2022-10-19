@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Sequences for stock.reallocate -->
+        <record id="seq_stock_reallocate" model="ir.sequence">
+            <field name="name">Stock Reallocate</field>
+            <field name="code">stock.reallocate</field>
+            <field name="prefix">SR</field>
+            <field name="padding">5</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</odoo>

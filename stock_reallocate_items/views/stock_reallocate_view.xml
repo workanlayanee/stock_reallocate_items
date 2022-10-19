@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_stock_reallocate_form" model="ir.ui.view">
+        <field name="name">stock.reallocate.form</field>
+        <field name="model">stock.reallocate</field>
+        <field name="arch" type="xml">
+            <form duplicate="0">
+                <header>
+                    <button name="action_confirm" id="action_confirm" data-hotkey="v"
+                            string="Confirm" class="btn-primary" type="object"
+                            attrs="{'invisible': [('state', 'not in', ['draft'])]}"/>
+                    <button name="action_approve" states="wait" type="object" class="btn-primary" string="Approve" groups="stock_reallocate_items.group_stock_reallocate"/>
+                    <button name="action_cancel" type="object" string="Cancel" attrs="{'invisible': ['|', ('state', 'not in', ['draft', 'wait']), ('id', '=', False)]}" data-hotkey="z"/>
+                    <button name="action_draft" states="cancel" type="object" string="Set to Draft" data-hotkey="w"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,done"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group name="partner_details">
+                            <field name="picking_type_id" attrs="{'readonly': [('state', 'not in', ('draft'))]}"/>
+                            <field name="product_id" attrs="{'readonly': [('state', 'not in', ('draft'))]}" domain="[('detailed_type','=','product'),('tracking','=','none')]"/>
+                            <label for="qty_on_hand"/>
+                            <div class="o_row">
+                                <field name="qty_on_hand" readonly="1"/>
+                                <field name="product_uom_id" groups="uom.group_uom" class="oe_no_button" readonly="1"/>
+                            </div>
+                        </group>
+                        <group>
+                            <field name="location_id" domain="[('usage','!=','view'),('usage','=','internal')]" groups="stock.group_stock_multi_locations" attrs="{'readonly': [('state', 'not in', ('draft'))]}"/>
+                            <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company" attrs="{'readonly': [('state', 'not in', ('draft'))]}"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Operations" name="operations">
+                            <field
+                                    name="reallocate_line"
+                                    mode="tree"
+                                    attrs="{'readonly': [('state', 'in', ('wait','done','cancel'))]}"
+                            >
+                                <form>
+                                    <group>
+                                        <group>
+                                            <field name="product_id"/>
+                                            <label for="qty_demand"/>
+                                            <div class="o_row">
+                                                <field name="qty_demand"/>
+                                                <field name="product_uom_id" groups="uom.group_uom" class="oe_no_button"/>
+                                            </div>
+                                            <label for="qty_reserved"/>
+                                            <div class="o_row">
+                                                <field name="qty_reserved"/>
+                                                <field name="product_uom_id" groups="uom.group_uom" class="oe_no_button"/>
+                                            </div>
+                                            <label for="qty_done"/>
+                                            <div class="o_row">
+                                                <field name="qty_done"/>
+                                                <field name="product_uom_id" groups="uom.group_uom" class="oe_no_button"/>
+                                            </div>
+                                            <label for="qty_commit"/>
+                                            <div class="o_row">
+                                                <field name="qty_commit"/>
+                                                <field name="product_uom_id" groups="uom.group_uom" class="oe_no_button"/>
+                                            </div>
+                                        </group>
+                                        <group>
+                                            <field name="move_id" invisible="1"/>
+                                            <field name="company_id" invisible="1"/>
+                                            <field name="picking_id"/>
+                                            <field name="origin"/>
+                                        </group>
+                                    </group>
+                                </form>
+                                <tree string="Stock Reallocate Lines" editable="bottom" create="false" delete="false">
+                                    <field name="company_id" invisible="1"/>
+                                    <field name="picking_id" optional="show" readonly="1" force_save="1"/>
+                                    <field name="move_id" invisible="1"/>
+                                    <field name="origin" optional="show"/>
+                                    <field name="product_id" readonly="1" force_save="1"/>
+                                    <field name="product_uom_id" readonly="1" force_save="1" groups="uom.group_uom"/>
+                                    <field name="qty_demand" readonly="1" force_save="1"/>
+                                    <field name="qty_reserved" readonly="1" force_save="1"/>
+                                    <field name="qty_done" readonly="1" force_save="1"/>
+                                    <field name="qty_commit"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_stock_reallocate_tree" model="ir.ui.view">
+        <field name="name">stock.reallocate.tree</field>
+        <field name="model">stock.reallocate</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="picking_type_id"/>
+                <field name="product_id"/>
+                <field name="location_id"/>
+                <field name="company_id" options="{'no_create': True}" groups="base.group_multi_company"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_stock_reallocate" model="ir.actions.act_window">
+        <field name="name">Reallocate</field>
+        <field name="res_model">stock.reallocate</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_stock_reallocate_tree"/>
+    </record>
+
+    <menuitem id="menu_stock_reallocate"
+              name="Reallocate"
+              parent="stock.menu_stock_warehouse_mgmt"
+              groups="stock.group_stock_multi_locations"
+              sequence="7"
+              action="action_stock_reallocate"/>
+
+</odoo>
