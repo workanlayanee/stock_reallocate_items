@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 #############################################################################
 #
-#    Cybrosys Technologies Pvt. Ltd.
+#    K. Kanlayanee Panpiriya
 #
-#    Copyright (C) 2021-TODAY Cybrosys Technologies(<https://www.cybrosys.com>)
-#    Author: Cybrosys Techno Solutions(<https://www.cybrosys.com>)
+#    Copyright (C) 2022-TODAY Kanlayanee Panpiriya(<workanlayanee@gmail.com>)
+#    Author: Kanlayanee Panpiriya(<workanlayanee@gmail.com>)
 #
 #    You can modify it under the terms of the GNU LESSER
 #    GENERAL PUBLIC LICENSE (LGPL v3), Version 3.
@@ -22,14 +22,12 @@
 
 {
     "name": "Stock Reallocate Items",
-    "description": """""",
-    "summary": "",
+    "description": "commutate several products in each order easily.",
+    "summary": "commit product for change several reserved",
     "category": "Inventory/Inventory",
     "version": "15.0.1.0",
-    "author": '--',
-    "company": '--',
-    "maintainer": '--',
-    "website": "--",
+    "author": 'Kanlayanee Panpiriya',
+    "support": "workanlayanee@gmail.com",
     "price": 49.0,
     "currency": 'EUR',
     "depends": ['stock'],
@@ -41,7 +39,7 @@
         'views/stock_reallocate_view.xml',
 
     ],
-    'license': 'Other proprietary',
+    'license': 'LGPL-3',
     'installable': True,
     'application': True,
     'auto_install': False,
