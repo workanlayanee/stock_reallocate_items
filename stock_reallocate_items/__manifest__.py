@@ -28,7 +28,7 @@
     "version": "15.0.1.0",
     "author": 'KANRATH Technologies',
     "support": "workanlayanee@gmail.com",
-    "price": 29.9,
+    "price": 29.75,
     "currency": 'EUR',
     "depends": ['stock'],
     "data": [
@@ -39,6 +39,7 @@
         'views/stock_reallocate_view.xml',
 
     ],
+    'images': ['static/description/thumbnails.png'],
     'license': 'LGPL-3',
     'installable': True,
     'application': True,
