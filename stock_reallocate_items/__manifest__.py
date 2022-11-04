@@ -23,12 +23,12 @@
 {
     "name": "Stock Reallocate Items",
     "description": "commutate several products in each order easily.",
-    "summary": "commit product for change several reserved",
+    "summary": "Commit product for change several reserved.",
     "category": "Inventory/Inventory",
     "version": "15.0.1.0",
     "author": 'KANRATH Technologies',
     "support": "workanlayanee@gmail.com",
-    "price": 29.75,
+    "price": 29.99,
     "currency": 'EUR',
     "depends": ['stock'],
     "data": [
