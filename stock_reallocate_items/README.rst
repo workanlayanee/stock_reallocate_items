@@ -14,7 +14,7 @@ General Public License, Version 3 (LGPL v3).
 
 Author
 -------
-* 'Kanlayanee Panpiriya(<workanlayanee@gmail.com>)'__
+* 'KANRATH Technologies(<workanlayanee@gmail.com>)'__
 
 Contacts
 --------

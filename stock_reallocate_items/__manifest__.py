@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 #############################################################################
 #
-#    K. Kanlayanee Panpiriya
+#    KANRATH Technologies
 #
-#    Copyright (C) 2022-TODAY Kanlayanee Panpiriya(<workanlayanee@gmail.com>)
-#    Author: Kanlayanee Panpiriya(<workanlayanee@gmail.com>)
+#    Copyright (C) 2022-TODAY KANRATH Technologies(<workanlayanee@gmail.com>)
+#    Author: KANRATH Technologies(<workanlayanee@gmail.com>)
 #
 #    You can modify it under the terms of the GNU LESSER
 #    GENERAL PUBLIC LICENSE (LGPL v3), Version 3.
@@ -26,9 +26,9 @@
     "summary": "commit product for change several reserved",
     "category": "Inventory/Inventory",
     "version": "15.0.1.0",
-    "author": 'Kanlayanee Panpiriya',
+    "author": 'KANRATH Technologies',
     "support": "workanlayanee@gmail.com",
-    "price": 49.0,
+    "price": 29.9,
     "currency": 'EUR',
     "depends": ['stock'],
     "data": [
